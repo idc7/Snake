@@ -1,0 +1,28 @@
+td{      height:5px;
+         width:5px;
+         background-color: #777777;}
+      
+button{  width:100px;
+         height:22px;
+         text-align: left;}
+
+body{    background-color: #333333;}
+
+th{      color: #777777;
+         font-size: 35px;}
+        
+div{     color: #777777;}
+
+input{   width: 50px;}
+      
+.food{   background-color: #DD0000;}
+ 
+.snake{  background-color: #121212;}
+ 
+.TEST{   background-color: #FFFFFF;}
+
+
+.up{   background-color: #FFFFFF;}
+.down{   background-color: #FFFFFF;}
+.left{   background-color: #FFFFFF;}
+.right{   background-color: #FFFFFF;} 
