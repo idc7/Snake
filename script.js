@@ -1,4 +1,4 @@
-// put in 'new' when makeing objs
+
 
 $(document).ready(function(){
    var numCol = 50;
@@ -20,14 +20,13 @@ $(document).ready(function(){
   
    //the snake object should probably replace with constructor
    var snake = {};
-      snake.sBody = linkedList(); 
-      snake.sBody.push(startLoc);// replace with linked list to vastly improve performance
+      snake.sBody = [startLoc];// replace with linked list to vastly improve performance
       $('#' + startLoc).addClass('snake');
       snake.GROW_SIZE = 5;
       snake.growLeft = 5;
       snake.move = function(){
          if(direction !== 0){
-            var head = snake.sBody.peekLast();
+            var head = snake.sBody[snake.sBody.length-1];
             var newHead = head + direction;
             lastDirection = direction;
             //console.log(lastDirection);
@@ -74,8 +73,7 @@ $(document).ready(function(){
       lastDirection = 0;
       arenaRemover(numRow);
       startLoc = arenaCreator(numCol, numRow);
-      snake.sBody = linkedList(); 
-      snake.sBody.push(startLoc);
+      snake.sBody = [startLoc]; 
       snake.growLeft = 5;
       $('#' + startLoc).addClass('snake');
       currentFood = nextFood(snake.sBody, numCol, numRow, currentFood);
@@ -202,26 +200,19 @@ function node(value, next) {
 function linkedList() {
    this.next = null;
    this.last = null;
-   this.length = 0;
    this.push = function(value) {
       if(this.next === null){
-         this.next = new node(value,null);
-         this.last = new node(value,null);}
+         this.next = node(value,null);
+         this.last = node(value,null);}
          else{ 
             this.last.next = node(value,null);
             this.last = this.last.next;}
    };
-   this.peekFirst = function() {return this.next.value;};
-   this.peekLast = function() {return this.last.value;};
+
    this.pop = function() {
-      if(this.next === null){
-         return null;}
-      else{
-         var val = this.next.value;
-         this.next = this.next.next;
-         if(this.next === null){
-            this.last = null;}
-         return val;}
+     var val = this.next.value;
+     this.next = this.next.next;
+     return val;
    };
 }
 
